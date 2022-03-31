@@ -12,14 +12,18 @@ import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import { AddgradedialogComponent } from './pages/addgradedialog/addgradedialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
   declarations: [
     WrapperComponent,
     HomeComponent,
-    GradesComponent
+    GradesComponent,
+    AddgradedialogComponent
   ],
+  entryComponents: [AddgradedialogComponent],
   imports: [
     CommonModule,
     SidebarRoutingModule,
@@ -31,6 +35,7 @@ import {MatInputModule} from "@angular/material/input";
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDialogModule
   ],
   providers: []
 })

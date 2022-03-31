@@ -7,28 +7,28 @@
       "descriptiveGrade": "Good 1"
     },
     {
-      "id": "favav2",
-      "minPercentage": 21,
-      "symbolicGrade": "B",
-      "descriptiveGrade": "Good 2"
-    },
-    {
       "id": "favav3",
-      "minPercentage": 41,
-      "symbolicGrade": "D",
+      "minPercentage": 21,
+      "symbolicGrade": "C",
       "descriptiveGrade": "Good 3"
     },
     {
-      "id": "favav4",
-      "minPercentage": 61,
+      "id": "favav5",
+      "minPercentage": 41,
       "symbolicGrade": "E",
-      "descriptiveGrade": "Good 4"
+      "descriptiveGrade": "Good 5"
     },
     {
-      "id": "favav5",
+      "id": "favav7",
+      "minPercentage": 61,
+      "symbolicGrade": "G",
+      "descriptiveGrade": "Good 7"
+    },
+    {
+      "id": "favav9",
       "minPercentage": 81,
-      "symbolicGrade": "F",
-      "descriptiveGrade": "Good 5"
+      "symbolicGrade": "I",
+      "descriptiveGrade": "Good 9"
     }
   ]
 }

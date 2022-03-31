@@ -4,15 +4,15 @@
 
   <div *ngIf="grades" class="grades">
 
-    <div *ngFor="let grade of grades" class="grade" (click)="isExpanded = true">
+    <div *ngFor="let grade of grades" class="grade" (click)="gradeView = grade; isExpanded = true">
       <span class="grade-element">{{grade.symbolicGrade}}</span>
-      <span class="grade-element">{{grade.minPercentage}}% - 50%</span>
+      <span class="grade-element">{{grade.minPercentage}}% - {{grade.maxPercentage}}%</span>
       <div class="spacer"></div>
-      <button (click)="deleteGrade(grade.id)" mat-icon-button class="grade-icon"><mat-icon>delete</mat-icon></button>
+      <button (click)="deleteGrade(grade.id)" mat-icon-button class="grade-icon"><mat-icon style="color: green">delete</mat-icon></button>
     </div>
   </div>
   <div class="add-grade-container">
-    <button (click)="addGrade(42, 'G')" mat-button class="add-grade-button">
+    <button (click)="addGrade()" mat-button class="add-grade-button">
       <mat-icon class="add-grade-icon">add</mat-icon> ADD NEW GRADE</button>
   </div>
 </div>
@@ -22,24 +22,26 @@
   <div class="percentage-input">
     <mat-form-field class="field" appearance="fill">
       <mat-label>Percentage from</mat-label>
-      <input matInput>
+      <input matInput type="number" [valueAsNumber]="gradeView.minPercentage">
     </mat-form-field>
 
     <mat-form-field class="field" appearance="fill">
       <mat-label>Percentage to</mat-label>
-      <input matInput>
+      <input matInput type="number" [valueAsNumber]="gradeView.maxPercentage">
     </mat-form-field>
   </div>
 
   <div class="grade-input">
     <mat-form-field class="field" appearance="fill">
       <mat-label>Grade</mat-label>
-      <input matInput>
+      <input matInput type="text" [value]="gradeView.symbolicGrade">
     </mat-form-field>
     <mat-form-field class="field" appearance="fill">
       <mat-label>Grade description</mat-label>
-      <input matInput>
+      <input matInput type="text" [value]="gradeView.descriptiveGrade">
     </mat-form-field>
   </div>
+
+  <button mat-raised-button class="update-button">Update</button>
 
 </div>
