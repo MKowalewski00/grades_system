@@ -4,6 +4,12 @@ import {GradeService} from "../../../service/grade.service";
 import {MatDialog} from "@angular/material/dialog";
 import {AddgradedialogComponent} from "../addgradedialog/addgradedialog.component";
 
+export interface DialogData {
+  minPercentage: number;
+  symbolicGrade: string;
+}
+
+
 @Component({
   selector: 'app-grades',
   templateUrl: './grades.component.html',
@@ -11,6 +17,8 @@ import {AddgradedialogComponent} from "../addgradedialog/addgradedialog.componen
 })
 export class GradesComponent implements OnInit {
 
+  minPercentage: number = 0;
+  symbolicGrade: string = '';
   grades: Grade[] = [];
   gradeView: Grade =  {
     descriptiveGrade: '',
@@ -21,7 +29,8 @@ export class GradesComponent implements OnInit {
   };
   isExpanded = true;
 
-  constructor(private _service: GradeService, public addGradeDialog: MatDialog) { }
+  constructor(private _service: GradeService,
+              public addGradeDialog: MatDialog) { }
 
   ngOnInit(): void {
     this.loadGrades();
@@ -53,6 +62,20 @@ export class GradesComponent implements OnInit {
 
 
   addGrade() {
-    this.addGradeDialog.open(AddgradedialogComponent)
+    const dialogRef = this.addGradeDialog.open(AddgradedialogComponent, {
+      data: {minPercentage: this.minPercentage, symbolicGrade: this.symbolicGrade}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result != undefined)
+      {
+        this._service.add(result.minPercentage, result.symbolicGrade).subscribe(() => {
+          this.loadGrades();
+          console.log("Added grade")
+        })
+        console.log(result)
+      }
+    })
+
   }
 }

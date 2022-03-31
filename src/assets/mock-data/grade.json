@@ -9,25 +9,25 @@
     {
       "id": "favav3",
       "minPercentage": 21,
-      "symbolicGrade": "C",
+      "symbolicGrade": "B",
       "descriptiveGrade": "Good 3"
     },
     {
       "id": "favav5",
       "minPercentage": 41,
-      "symbolicGrade": "E",
+      "symbolicGrade": "C",
       "descriptiveGrade": "Good 5"
     },
     {
       "id": "favav7",
       "minPercentage": 61,
-      "symbolicGrade": "G",
+      "symbolicGrade": "D",
       "descriptiveGrade": "Good 7"
     },
     {
       "id": "favav9",
       "minPercentage": 81,
-      "symbolicGrade": "I",
+      "symbolicGrade": "E",
       "descriptiveGrade": "Good 9"
     }
   ]
