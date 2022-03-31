@@ -5,7 +5,7 @@
   <div *ngIf="grades" class="grades">
 
     <div *ngFor="let grade of grades" class="grade" (click)="gradeView = grade; isExpanded = true">
-      <span class="grade-element">{{grade.symbolicGrade}}</span>
+      <span class="grade-element">{{grade.symbolicGrade | uppercase}}</span>
       <span class="grade-element">{{grade.minPercentage}}% - {{grade.maxPercentage}}%</span>
       <div class="spacer"></div>
       <button (click)="deleteGrade(grade.id)" mat-icon-button class="grade-icon"><mat-icon style="color: green">delete</mat-icon></button>

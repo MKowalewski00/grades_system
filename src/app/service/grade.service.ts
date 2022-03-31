@@ -15,6 +15,10 @@ export class GradeService {
     return this._http.get<Grade[]>(environment.baseUrl)
   }
 
+  get(id: string): Observable<Grade> {
+    return this._http.get<Grade>(environment.baseUrl + '/' + id);
+  }
+
   delete(id: string) {
     return this._http.delete<any>(environment.baseUrl + '/' + id);
   }

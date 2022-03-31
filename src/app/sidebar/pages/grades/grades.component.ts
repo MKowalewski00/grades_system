@@ -69,10 +69,14 @@ export class GradesComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if(result != undefined)
       {
-        this._service.add(result.minPercentage, result.symbolicGrade).subscribe(() => {
-          this.loadGrades();
-          console.log("Added grade")
-        })
+        if(!(this.grades.findIndex(index => index.minPercentage === result.minPercentage) == -1)) {
+          console.log("percentage or symbolic grade is in use")
+        } else {
+          this._service.add(result.minPercentage, result.symbolicGrade).subscribe(() => {
+            this.loadGrades();
+            console.log("Added grade")
+          })
+        }
         console.log(result)
       }
     })
