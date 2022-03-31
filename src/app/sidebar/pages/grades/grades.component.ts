@@ -10,7 +10,7 @@ import {GradeService} from "../../../service/grade.service";
 export class GradesComponent implements OnInit {
 
   grades: Grade[] = [];
-
+  isExpanded = true;
 
   constructor(private _service: GradeService) { }
 

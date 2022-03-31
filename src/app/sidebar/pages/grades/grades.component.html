@@ -1,24 +1,45 @@
-<div class="split left">
+<div class="split-left">
 
   <span *ngIf="!grades">Loading...</span>
 
   <div *ngIf="grades" class="grades">
 
-    <div *ngFor="let grade of grades" class="grade">
+    <div *ngFor="let grade of grades" class="grade" (click)="isExpanded = true">
       <span class="grade-element">{{grade.symbolicGrade}}</span>
       <span class="grade-element">{{grade.minPercentage}}% - 50%</span>
       <div class="spacer"></div>
       <button (click)="deleteGrade(grade.id)" mat-icon-button class="grade-icon"><mat-icon>delete</mat-icon></button>
     </div>
-
   </div>
-
   <div class="add-grade-container">
-    <button (click)="addGrade(42, 'G')" mat-button class="add-grade-button"><mat-icon class="add-grade-icon">add</mat-icon> ADD NEW GRADE</button>
+    <button (click)="addGrade(42, 'G')" mat-button class="add-grade-button">
+      <mat-icon class="add-grade-icon">add</mat-icon> ADD NEW GRADE</button>
   </div>
-
 </div>
 
-<div class="split right">
+<div class="split-right">
+
+  <div class="percentage-input">
+    <mat-form-field class="field" appearance="fill">
+      <mat-label>Percentage from</mat-label>
+      <input matInput>
+    </mat-form-field>
+
+    <mat-form-field class="field" appearance="fill">
+      <mat-label>Percentage to</mat-label>
+      <input matInput>
+    </mat-form-field>
+  </div>
+
+  <div class="grade-input">
+    <mat-form-field class="field" appearance="fill">
+      <mat-label>Grade</mat-label>
+      <input matInput>
+    </mat-form-field>
+    <mat-form-field class="field" appearance="fill">
+      <mat-label>Grade description</mat-label>
+      <input matInput>
+    </mat-form-field>
+  </div>
 
 </div>

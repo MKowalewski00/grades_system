@@ -3,5 +3,4 @@ export interface Grade {
   minPercentage: number;
   symbolicGrade: string;
   descriptiveGrade: string;
-  maxPercentage: number;
 }

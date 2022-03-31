@@ -1,23 +1,37 @@
-.split {
+//.container {
+//  height: 100%;
+//  width: 70%;
+//  left: 0;
+//}
+//
+//.side-container{
+//  height: 100%;
+//  width: 30%;
+//  right: 0;
+//  background-color: lime;
+//}
+
+.split-left {
   height: 100%;
-  width: 50%;
+  width: 70%;
   position: fixed;
-  z-index: 1;
-  top: 0;
   overflow-x: hidden;
-  padding-top: 20px;
-}
-.left{
   left: 0;
-  background-color: gray;
 }
-.right{
+
+.split-right {
+  height: 100%;
+  width: 30%;
+  position: fixed;
+  overflow-x: hidden;
   right: 0;
-  background-color: bisque;
+  padding-top: 20px;
+  background-color: ghostwhite;
 }
+
 .grades{
-  width: 100%;
-  //margin-right: 50px;
+  margin-top: 30px;
+  margin-right: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,15 +49,18 @@
   box-shadow: 0 0 30px -15px rgba(66, 68, 90, 1);
   cursor: pointer;
 }
+
 .grade-element{
   font-size: 15px;
   padding-left: 10px;
   padding-right: 5px;
 }
+
 .grade-icon {
   margin-right: 5px;
   cursor: pointer;
 }
+
 .spacer {
   flex: 1 auto;
 }
@@ -57,5 +74,19 @@
 .add-grade-icon{
   font-size: 22px
 }
+
 .add-grade-button {
+}
+
+.percentage-input{
+}
+
+.grade-input{
+  display: flex;
+  flex-direction: column;
+}
+
+.field{
+  margin-left: 15px;
+  width: 200px;
 }
