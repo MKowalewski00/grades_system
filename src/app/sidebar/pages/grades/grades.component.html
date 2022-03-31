@@ -1,0 +1,24 @@
+<div class="split left">
+
+  <span *ngIf="!grades">Loading...</span>
+
+  <div *ngIf="grades" class="grades">
+
+    <div *ngFor="let grade of grades" class="grade">
+      <span class="grade-element">{{grade.symbolicGrade}}</span>
+      <span class="grade-element">{{grade.minPercentage}}% - 50%</span>
+      <div class="spacer"></div>
+      <button (click)="deleteGrade(grade.id)" mat-icon-button class="grade-icon"><mat-icon>delete</mat-icon></button>
+    </div>
+
+  </div>
+
+  <div class="add-grade-container">
+    <button (click)="addGrade(42, 'G')" mat-button class="add-grade-button"><mat-icon class="add-grade-icon">add</mat-icon> ADD NEW GRADE</button>
+  </div>
+
+</div>
+
+<div class="split right">
+
+</div>

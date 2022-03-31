@@ -1,0 +1,32 @@
+.mat-sidenav-container {
+  height: 100%;
+
+
+  .mat-sidenav {
+    background-color: darkgreen;
+    .mat-nav-list {
+      .open-button {
+        transition: 500ms ease-in-out;
+        transform: rotate(0deg);
+      }
+      .open-button.open {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}
+
+.menu-item
+{
+  color: white;
+}
+
+.content-wrapper {
+}
+
+.toolbar {
+  justify-content: right;
+  align-items: center;
+  color: black;
+  background-color: white;
+}

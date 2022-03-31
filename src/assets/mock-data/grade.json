@@ -1,0 +1,34 @@
+{
+  "grades": [
+    {
+      "id": "favav1",
+      "minPercentage": 0,
+      "symbolicGrade": "A",
+      "descriptiveGrade": "Good 1"
+    },
+    {
+      "id": "favav2",
+      "minPercentage": 21,
+      "symbolicGrade": "B",
+      "descriptiveGrade": "Good 2"
+    },
+    {
+      "id": "favav3",
+      "minPercentage": 41,
+      "symbolicGrade": "D",
+      "descriptiveGrade": "Good 3"
+    },
+    {
+      "id": "favav4",
+      "minPercentage": 61,
+      "symbolicGrade": "E",
+      "descriptiveGrade": "Good 4"
+    },
+    {
+      "id": "favav5",
+      "minPercentage": 81,
+      "symbolicGrade": "F",
+      "descriptiveGrade": "Good 5"
+    }
+  ]
+}
