@@ -15,6 +15,7 @@ import {MatInputModule} from "@angular/material/input";
 import { AddgradedialogComponent } from './pages/addgradedialog/addgradedialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {FormsModule} from "@angular/forms";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import {FormsModule} from "@angular/forms";
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule
   ],
   providers: []
 })
