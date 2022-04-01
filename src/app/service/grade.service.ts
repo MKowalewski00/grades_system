@@ -26,4 +26,10 @@ export class GradeService {
   add(minPercentage: number, symbolicGrade: string) {
     return this._http.post<any>(environment.baseUrl, {minPercentage, symbolicGrade})
   }
+
+  update(id: string, minPercentage: number, symbolicGrade: string, descriptiveGrade: string) {
+    return this._http.put<any>(environment.baseUrl + '/' + id, {minPercentage, symbolicGrade, descriptiveGrade})
+  }
 }
+
+
