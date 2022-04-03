@@ -70,30 +70,25 @@ export class GradesComponent implements OnInit {
         } else if(result.symbolicGrade === '') {
           this.openSnackBar("Symbolic Grade is empty!")
         }else if(!(this.grades.findIndex(index => index.minPercentage === result.minPercentage) == -1)) {
-          console.log("minpercentage is in use")
           this.openSnackBar("Minimum Percentage Is Used!")
         } else {
           this._service.add(result.minPercentage, result.symbolicGrade.toUpperCase()).subscribe(() => {
             this.loadGrades();
-            console.log("Added grade")
             this.openSnackBar("Added Grade")
           })
         }
-        console.log(result)
       }
     })
   }
 
   updateGrade(id: string) {
-    if(!(id === '')) {
+    if(id !== '') {
       this._service.update(id, this.minPercentage, this.symbolicGrade.toUpperCase(), this.descriptiveGrade).subscribe(
         () => {
-          console.log("updated grade");
           this.openSnackBar("Updated Grade")
           this.loadGrades();
         })
     } else {
-      console.log("update grade failed")
       this.openSnackBar("Update Grade Failed!")
     }
   }

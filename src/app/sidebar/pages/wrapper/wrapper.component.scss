@@ -1,7 +1,5 @@
 .mat-sidenav-container {
   height: 100%;
-
-
   .mat-sidenav {
     background-color: darkgreen;
     .mat-nav-list {
@@ -21,12 +19,22 @@
   color: white;
 }
 
-.content-wrapper {
+.toolbar {
+  justify-content: left;
+  align-items: center;
+  color: green;
+  background-color: white;
 }
 
-.toolbar {
-  justify-content: right;
-  align-items: center;
-  color: black;
-  background-color: white;
+.spacer {
+  flex: 1 auto;
+}
+
+.actual-page {
+}
+.actual-page-icon{
+  position: relative;
+  top: 4px;
+  left: -5px;
+  cursor: pointer;
 }

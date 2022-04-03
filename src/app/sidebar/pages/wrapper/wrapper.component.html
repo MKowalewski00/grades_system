@@ -6,7 +6,7 @@
         <mat-icon mat-list-icon class="open-button sidenav-button menu-item" [ngClass]="{'open': isExpanded}">menu</mat-icon>
         <span *ngIf="isExpanded" class="menu-item">Menu</span>
       </mat-list-item>
-      <mat-list-item *ngFor="let item of menu" [routerLink]='item.routerLink' (click)="isExpanded = true" class="menu-item" >
+      <mat-list-item *ngFor="let item of menu" [routerLink]='item.routerLink' (click)="isExpanded = true; actualPage = item.name" class="menu-item" >
         <mat-icon mat-list-icon>{{item.icon}}</mat-icon>
         <span *ngIf="isExpanded">{{item.name}}</span>
       </mat-list-item>
@@ -14,6 +14,11 @@
   </mat-sidenav>
 
   <mat-toolbar class="toolbar">
+    <span>
+      <mat-icon (click)="navigateHome()" class="actual-page-icon" *ngIf="actualPage !== 'Home'">arrow_back</mat-icon>
+      <span class="actual-page">{{actualPage}}</span>
+      <div class="spacer"></div>
+    </span>
   </mat-toolbar>
 
   <div class="content-wrapper">
@@ -21,3 +26,4 @@
   </div>
 
 </mat-sidenav-container>
+

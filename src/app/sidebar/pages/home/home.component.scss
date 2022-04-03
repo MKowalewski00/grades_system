@@ -1,0 +1,35 @@
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 100px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.module {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 20px;
+  margin: 5px 5px 5px 5px;
+  width: 150px;
+  height: 125px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  box-shadow: 0 0 30px -15px rgba(66, 68, 90, 1);
+  cursor: pointer;
+  color: green;
+}
+.module:hover{
+  background-color: lightgray;
+}
+.module-icon{
+  color: green;
+  position: relative;
+  top: 7px;
+  left: -13px;
+  font-size: 50px;
+}

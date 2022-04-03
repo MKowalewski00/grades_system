@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 
 interface MenuType {
   routerLink: string,
@@ -12,23 +13,26 @@ interface MenuType {
   styleUrls: ['./wrapper.component.scss']
 })
 export class WrapperComponent implements OnInit {
+  actualPage: string = ''
   isExpanded: boolean = false;
   menu: MenuType[] = [
     {
       routerLink: "home",
-      icon: "person",
+      icon: "home",
       name: "Home"
     },
     {
       routerLink: "grades",
-      icon: "person",
+      icon: "settings",
       name: "Grades"
     }
   ]
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  navigateHome() {
+    this._router.navigate(['/home']).then(() => this.actualPage = 'Home')
   }
-
 }
