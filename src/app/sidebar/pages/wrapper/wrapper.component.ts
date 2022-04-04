@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import {NavigationStart, Router, RouterEvent} from "@angular/router";
+import {filter} from "rxjs";
 
 interface MenuType {
   routerLink: string,
@@ -30,9 +31,21 @@ export class WrapperComponent implements OnInit {
 
   constructor(private _router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.actualPage = this._getCurrentPageName(this._router.url);
+
+    this._router.events.pipe(filter(event => event instanceof NavigationStart)).subscribe(url => {
+      if(url instanceof RouterEvent) {
+        this.actualPage = this._getCurrentPageName(url.url)
+      }
+    })
+  }
 
   navigateHome() {
     this._router.navigate(['/home']).then(() => this.actualPage = 'Home')
+  }
+
+  private _getCurrentPageName(url: string): string {
+    return this.menu.find(menuElement => menuElement.routerLink === url.substring(1))?.name || '';
   }
 }

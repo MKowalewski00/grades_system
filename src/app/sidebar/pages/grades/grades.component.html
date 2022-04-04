@@ -11,11 +11,12 @@
          descriptiveGrade = grade.descriptiveGrade;
          maxPercentage = grade.maxPercentage;
          id = grade.id;
-         isExpanded = true;">
+         updateGradeMobile();">
       <span class="grade-element">{{grade.symbolicGrade | uppercase}}</span>
       <span class="grade-element">{{grade.minPercentage}}% - {{grade.maxPercentage}}%</span>
       <div class="spacer"></div>
-      <button (click)="deleteGrade(grade.id)" mat-icon-button class="grade-icon"><mat-icon style="color: green">delete</mat-icon></button>
+      <button *ngIf="mobile" mat-icon-button class="grade-icon"><mat-icon class="grade-settings-icon">settings</mat-icon> </button>
+      <button (click)="deleteGrade(grade.id)" mat-icon-button class="grade-icon"><mat-icon class="grade-icon">delete</mat-icon></button>
     </div>
   </div>
   <div class="add-grade-container">
@@ -24,7 +25,7 @@
   </div>
 </div>
 
-<div class="split-right">
+<div *ngIf="!mobile" class="split-right">
 
   <div class="percentage-input">
     <mat-form-field class="field" appearance="fill">

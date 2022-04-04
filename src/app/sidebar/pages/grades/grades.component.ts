@@ -4,10 +4,20 @@ import {GradeService} from "../../../service/grade.service";
 import {MatDialog} from "@angular/material/dialog";
 import {AddgradedialogComponent} from "../addgradedialog/addgradedialog.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {UpdategradeComponent} from "../updategrade/updategrade.component";
 
-export interface DialogData {
+export interface addDialogData {
   minPercentage: number;
   symbolicGrade: string;
+}
+
+export interface updateDialogData {
+  id: string;
+  minPercentage: number;
+  maxPercentage: number;
+  symbolicGrade: string;
+  descriptiveGrade: string;
+  dialog: boolean;
 }
 
 
@@ -24,15 +34,26 @@ export class GradesComponent implements OnInit {
   maxPercentage: number = 0;
   id: string = ''
   grades: Grade[] = [];
-  isExpanded = true;
+  mobile: boolean = false;
 
   constructor(private _service: GradeService,
-              public addGradeDialog: MatDialog,
+              public GradeDialog: MatDialog,
               private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.loadGrades();
+    this.checkMobile();
+    window.onresize = () => this.mobile = window.innerWidth <= 725;
+
   }
+
+  checkMobile()
+  {
+    if(window.innerWidth <= 725) {
+      this.mobile = true
+    }
+  }
+
 
   deleteGrade(id: string) {
     this._service.delete(id).subscribe(() => {
@@ -58,11 +79,11 @@ export class GradesComponent implements OnInit {
 
 
   addGrade() {
-    const dialogRef = this.addGradeDialog.open(AddgradedialogComponent, {
+    const addDialog = this.GradeDialog.open(AddgradedialogComponent, {
       data: {minPercentage: this.minPercentage = 0, symbolicGrade: this.symbolicGrade = ''}
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    addDialog.afterClosed().subscribe(result => {
       if(result != undefined)
       {
         if(result.minPercentage === null) {
@@ -83,14 +104,58 @@ export class GradesComponent implements OnInit {
 
   updateGrade(id: string) {
     if(id !== '') {
-      this._service.update(id, this.minPercentage, this.symbolicGrade.toUpperCase(), this.descriptiveGrade).subscribe(
-        () => {
-          this.openSnackBar("Updated Grade")
-          this.loadGrades();
-        })
+      if(this.grades.findIndex(index => index.minPercentage === this.minPercentage) == -1){
+        this._service.update(id, this.minPercentage, this.symbolicGrade.toUpperCase(), this.descriptiveGrade).subscribe(
+          () => {
+            this.openSnackBar("Updated Grade")
+            this.loadGrades();
+          })
+      } else {
+        this.openSnackBar("Minimum Percentage Is Used!")
+      }
     } else {
       this.openSnackBar("Update Grade Failed!")
     }
+  }
+
+  updateGradeMobile() {
+    if(this.mobile) {
+      const updateDialog = this.GradeDialog.open(UpdategradeComponent,
+        {
+          data: {
+            id: this.id,
+            minPercentage: this.minPercentage,
+            maxPercentage: this.maxPercentage,
+            symbolicGrade: this.symbolicGrade,
+            descriptiveGrade: this.descriptiveGrade,
+            dialog: false
+          }
+        })
+
+      updateDialog.afterClosed().subscribe((result) => {
+        if(result != undefined){
+          if(result.dialog){
+            if (result.id !== '') {
+              if (this.grades.findIndex(index => index.minPercentage === result.minPercentage) == -1) {
+                this._service.update(result.id,
+                  result.minPercentage,
+                  result.symbolicGrade.toUpperCase(),
+                  result.descriptiveGrade).subscribe(() => {
+                  this.openSnackBar("Updated Grade");
+                  this.loadGrades();
+                })
+              } else {
+                this.openSnackBar("Minimum Percentage Is Used!")
+              }
+            } else {
+              this.openSnackBar("Update Grade Failed")
+            }
+          }
+        }
+
+      })
+    }
+
   }
 
   resetValues()

@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {DialogData} from "../grades/grades.component";
+import {addDialogData} from "../grades/grades.component";
 
 @Component({
   selector: 'app-addgradedialog',
@@ -10,7 +10,7 @@ import {DialogData} from "../grades/grades.component";
 export class AddgradedialogComponent implements OnInit {
 
   constructor(public dialog: MatDialogRef<AddgradedialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+              @Inject(MAT_DIALOG_DATA) public data: addDialogData) { }
 
   ngOnInit(): void {
   }

@@ -16,17 +16,14 @@ const routes: Routes = [
       {
         path: 'grades',
         component: GradesComponent
+      },
+      {
+        path: '',
+        redirectTo: '/home',
+        pathMatch: 'full'
       }
     ]
-  },
-  {
-    path: '**',
-    redirectTo: '/home',
-    pathMatch: 'full'
   }
-
-
-
 ];
 
 @NgModule({

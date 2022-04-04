@@ -16,6 +16,7 @@ import { AddgradedialogComponent } from './pages/addgradedialog/addgradedialog.c
 import {MatDialogModule} from "@angular/material/dialog";
 import {FormsModule} from "@angular/forms";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { UpdategradeComponent } from './pages/updategrade/updategrade.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     WrapperComponent,
     HomeComponent,
     GradesComponent,
-    AddgradedialogComponent
+    AddgradedialogComponent,
+    UpdategradeComponent
   ],
   entryComponents: [AddgradedialogComponent],
   imports: [

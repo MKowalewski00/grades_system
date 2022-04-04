@@ -8,8 +8,6 @@ import {Router} from "@angular/router";
 })
 export class HomeComponent implements OnInit {
 
-  actualPage: string = 'Grades';
-
   constructor(private _router: Router) { }
 
   ngOnInit(): void {
